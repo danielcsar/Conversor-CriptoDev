@@ -1,23 +1,37 @@
-let chai = require('chai');
-let chaiHttp = require('chai-http');
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../server/server');
 
 chai.use(chaiHttp);
 
-  describe("/POST teste", () => {
-    let bodyJSON = {
+  describe("/POST conversões", () => {
+    let params = {
       rgb: "255,255,255",
       hex: "#ffffff"
     };
 
-    it("it should GET all the books", (done) => {
+    it("Rgb to Hex", (done) => {
       chai
-        .request("http://localhost:8080")
-        .post("/teste").send(bodyJSON)
+        .request(server.app)
+        .post("/rgbToHex").send(params)
         .end((err, res) => {
-          res.should.have.status(201);
-          res.body.should.be.a("array");
-          // res.body.should.have.property("#ffffff");
-          // res.body.should.have.property("255,255,255");
+
+          chai.expect(err).to.be.null; // Sem erros
+          chai.expect(res).to.have.status(200); // StatusCode          
+          chai.expect(res.body).to.contains(params.hex);
+        done();
+      });
+    });
+
+    it("Hex to Rgb", (done) => {
+      chai
+        .request(server.app)
+        .post("/hextoRgb").send(params)
+        .end((err, res) => {
+
+          chai.expect(err).to.be.null; // Sem erros
+          chai.expect(res).to.have.status(200); // StatusCode          
+          chai.expect(res.body).to.contains(params.rgb);
         done();
       });
     });
