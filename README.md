@@ -19,6 +19,18 @@ $ npm start
 # Rodando script de testes
 $ npm test
 ```
+### Requisições
+```bash
+# endpoints disponíveis: POST
+  /rgbToHex
+  /hextoRgb
+
+# Exemplo de body JSON
+{
+    "rgb": "255,255,255",
+    "hex": "#ffffff"
+}
+```
 
 ## Projetos relevantes utilizados
 
@@ -30,6 +42,9 @@ $ npm test
 ## Desenvolvedores
 
 Daniel Cesar [LinkedIn](https://www.linkedin.com/in/danielcsar/)
-João Paulo [Github](https://github.com/jpaulopereiraaraujo)      
-Guilherme Boaventura [Github](https://github.com/guilhermeboaventurarodrigues)         
+
+João Paulo [Github](https://github.com/jpaulopereiraaraujo)
+
+Guilherme Boaventura [Github](https://github.com/guilhermeboaventurarodrigues)
+
 Anderson Dantas [Github](https://github.com/andersondantas81)
