@@ -1,7 +1,9 @@
 const express = require('express');
 const { createHex, createRgb } = require('../conversor');
+const dotenv = require('dotenv');
 
-const port = 8080;
+//const port = 8080;
+dotenv.config({ path: `.env.${process.env.NODE_ENV}`})
 
 const app = express();
 const users = [];
@@ -22,8 +24,8 @@ app.post('/hextoRgb', (req, res) => {
   return res.status(200).json(users);
 })
 
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`)
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Servidor rodando na porta ${process.env.PORT || 3000}`)
 })
 
 module.exports = { app }
